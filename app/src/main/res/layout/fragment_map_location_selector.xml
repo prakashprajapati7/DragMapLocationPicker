@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical"
+                android:clickable="false">
+
+                <fragment
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:id="@+id/mapFragment"
+                    tools:context=".activity.MapLocationSelectorActivity"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.smartpixels.dragMapLocationPicker.utility.RipplePulseLayout
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:clipChildren="false"
+                    app:rippleColor="@color/colorMapMarkerRipple"
+                    app:rippleType="fill"
+                    app:strokeWidth="2dp"
+                    app:startRadius="10dp"
+                    app:endRadius="70dp"
+                    app:duration="1700"
+                    android:id="@+id/ripplePulseLayout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/img_marker"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:paddingBottom="20dp"
+                        app:srcCompat="@drawable/ic_pick" />
+
+                </com.smartpixels.dragMapLocationPicker.utility.RipplePulseLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:id="@+id/mapInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:background="@drawable/rectangle_rounded_bg"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/findAddressProgressLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp">
+
+                    <ProgressBar
+                        android:layout_marginTop="1dp"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginEnd="9dp"
+                        android:id="@+id/findAddressProgress"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        style="@style/ProgressBar.Horizontal"
+                        android:indeterminate="true"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/findAddressProgressLayout"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/layoutTopPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <!--<ImageView
+                            android:id="@+id/icMapPin"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/ic_pin"
+                            android:backgroundTint="@color/black" />-->
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/lottieLoading"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:visibility="visible"
+                            app:lottie_fileName="lottie_map_location.json"
+                            app:lottie_loop="true" />
+
+                        <TextView
+                            android:id="@+id/tvPrimaryAddress"
+                            style="@style/Headline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginEnd="5dp"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:freezesText="false"
+                            android:gravity="center|left"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="Locating.." />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/viewSubAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layoutTopPrimary"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/tvSecondaryAddress"
+                            style="@style/Subhead"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="8dp"
+                            android:gravity="center|left"
+                            android:maxLines="3"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/btnConfirmLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="3dp"
+                        android:background="@color/colorPrimary"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:elevation="0dp"
+                        android:src="@drawable/ic_checkmark_24"
+                        android:tint="@color/white"
+                        app:borderWidth="0dp"
+                        app:elevation="0dp"
+                        app:fabSize="normal" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

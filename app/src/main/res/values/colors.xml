@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="blackLight">#cfcfcf</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimaryDark">#1a60ff</color>
+    <color name="colorPrimary">#1a60ff</color>
+
+    <color name="colorMapMarkerRippleDark">#801152FD</color>
+    <color name="colorMapMarkerRippleLight">#301152FD</color>
+    <color name="colorMapMarkerRipple">#501152FD</color>
+    <color name="colorPrimaryLight">#501152FD</color>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name" translatable="false">Drag Map Location Picker</string>
+    <string name="btnTextPickLocation" translatable="false">Pick Location</string>
+    <string name="google_map_key" translatable="false">AIzaSyBD9yenIzQaZ3-CeaBbfM8ZnI8woBBBBBB</string>
+</resources>
